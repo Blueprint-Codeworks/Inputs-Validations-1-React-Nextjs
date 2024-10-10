@@ -23,7 +23,7 @@ const ValidationForm: React.FC = () => {
     gender: "",
     terms: "",
   });
-  const [selectedGender, setSelectedGender] = useState('')
+  const [selectedGender, setSelectedGender] = useState("");
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -226,24 +226,38 @@ const ValidationForm: React.FC = () => {
       <div className="bg-gray-700 p-4 rounded-lg">
         <p className="mb-2">Género:</p>
         <div className="flex space-x-4">
-          {['male', 'female', 'other'].map((gender) => (
+          {["male", "female", "other"].map((gender) => (
             <label key={gender} className="inline-flex items-center">
-              <input 
-                type="radio" 
-                name="gender" 
-                value={gender} 
-                className="hidden" 
+              <input
+                type="radio"
+                name="gender"
+                value={gender}
+                className="hidden"
                 onChange={() => setSelectedGender(gender)}
               />
-              <span className={`px-4 py-2 rounded-full cursor-pointer transition-all duration-200 ease-in-out
-                               ${selectedGender === gender ? 'bg-orange-500 shadow-lg shadow-orange-500/50' : 'bg-gray-600'}
-                               hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-500/50`}>
-                {gender === 'male' ? 'Hombre' : gender === 'female' ? 'Mujer' : 'Otro'}
+              <span
+                className={`px-4 py-2 rounded-full cursor-pointer transition-all duration-200 ease-in-out
+                               ${
+                                 selectedGender === gender
+                                   ? "bg-orange-500 shadow-lg shadow-orange-500/50"
+                                   : "bg-gray-600"
+                               }
+                               hover:bg-orange-500 hover:shadow-lg hover:shadow-orange-500/50`}
+              >
+                {gender === "male"
+                  ? "Hombre"
+                  : gender === "female"
+                  ? "Mujer"
+                  : "Otro"}
               </span>
             </label>
           ))}
         </div>
-        {errors.gender && <span className="text-red-500 text-sm mt-2 block">{errors.gender}</span>}
+        {errors.gender && (
+          <span className="text-red-500 text-sm mt-2 block">
+            {errors.gender}
+          </span>
+        )}
       </div>
 
       {/* Terms and Conditions Card */}
@@ -284,5 +298,4 @@ const ValidationForm: React.FC = () => {
     </form>
   );
 };
-
 export default ValidationForm;
